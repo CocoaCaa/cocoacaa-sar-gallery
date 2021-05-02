@@ -27,7 +27,7 @@ import { Options, Vue } from 'vue-class-component';
 export default class GalleryThumbnail extends Vue {
   private src: string | null = null;
 
-  public fetchImage(imgurId: string) {
+  public fetchImage(imgurId: string): void {
     this.src = `https://i.imgur.com/${imgurId}s.png`;
     const img = new Image();
     img.onload = () => {

@@ -29,7 +29,7 @@ import { ImgurImage } from '@/types';
 export default class Home extends Vue {
   public images: ImgurImage[] = [];
 
-  public async mounted() {
+  public async mounted(): Promise<void> {
     const imagesReponse = await ky.get('https://api.imgur.com/3/album/afHytew/images', {
       headers: {
         Authorization: `Client-ID ${process.env.VUE_APP_CLIENT_ID}`,
@@ -39,7 +39,7 @@ export default class Home extends Vue {
     this.images = imagesJson.data;
   }
 
-  public handleShowGalleryImage(params: { imgurId: string }) {
+  public handleShowGalleryImage(params: { imgurId: string }): void {
     this.$router.push({ name: 'GalleryImage', params: { imgurId: params.imgurId } });
   }
 }

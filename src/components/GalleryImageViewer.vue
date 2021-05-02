@@ -14,11 +14,11 @@ import { Options, Vue } from 'vue-class-component';
 export default class GalleryImageViewer extends Vue {
   public imgurId!: string;
 
-  public get src() {
+  public get src(): string {
     return `https://i.imgur.com/${this.$route.params.imgurId}.png`;
   }
 
-  public handleClose() {
+  public handleClose(): void {
     this.$router.push({ name: 'Home' });
   }
 }
