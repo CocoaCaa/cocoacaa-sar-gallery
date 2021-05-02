@@ -41,4 +41,8 @@ export default class App extends Vue {}
   padding: 30px 0;
   text-align: center;
 }
+
+a {
+  color: #3ec4a2;
+}
 </style>
