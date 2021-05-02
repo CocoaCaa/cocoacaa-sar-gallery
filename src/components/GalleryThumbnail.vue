@@ -1,7 +1,11 @@
 <template>
-  <div class="GalleryThumbnail" :style="{ 'background-image': `url(${src})` }">
+  <button
+    class="GalleryThumbnail"
+    :style="{ 'background-image': `url(${src})` }"
+    @click="$emit('select-image', { imgurId })"
+  >
     <div class="GalleryThumbnailDescription">{{ description }}</div>
-  </div>
+  </button>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
@@ -40,16 +44,17 @@ export default class GalleryThumbnail extends Vue {
   display: inline-block;
   width: 350px;
   height: 350px;
-  background-size: auto 100%;
+  background-size: cover;
   background-position: center;
   box-shadow: 10px 10px 0 rgba(255, 255, 255, 0.2);
-  transition: 200ms box-shadow, 200ms transform, 200ms background-size;
+  transition: 200ms box-shadow, 200ms transform;
   overflow: hidden;
+  border: 0;
+  background-color: none;
 
   &:hover {
     box-shadow: 0 0 0 rgba(255, 255, 255, 0.2);
     transform: translate(10px, 10px);
-    background-size: auto 110%;
 
     .GalleryThumbnailDescription {
       transform: translateY(0);

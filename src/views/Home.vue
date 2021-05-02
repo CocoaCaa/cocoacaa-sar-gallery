@@ -4,9 +4,14 @@
     <h1 class="HomeTitle">CocoaCaa's Super Animal Royale Gallery</h1>
     <div class="HomeGalleryList">
       <div class="HomeGalleryListItem" v-for="image in images" :key="image.id">
-        <GalleryThumbnail :imgur-id="image.id" :description="image.description" />
+        <GalleryThumbnail
+          :imgur-id="image.id"
+          :description="image.description"
+          @select-image="handleShowGalleryImage"
+        />
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -32,6 +37,10 @@ export default class Home extends Vue {
     });
     const imagesJson: { data: ImgurImage[] } = await imagesReponse.json();
     this.images = imagesJson.data;
+  }
+
+  public handleShowGalleryImage(params: { imgurId: string }) {
+    this.$router.push({ name: 'GalleryImage', params: { imgurId: params.imgurId } });
   }
 }
 </script>
